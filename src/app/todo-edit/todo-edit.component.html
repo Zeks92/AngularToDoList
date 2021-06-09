@@ -1,0 +1,22 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">{{ todo.id == 0 ? "Adding" : "Editing" }} a task</h1>
+        <p class="lead">Use the following form {{ todo.id == 0 ? "to add" : "to edit" }} a task
+        </p>
+    </div>
+</div>
+<div class="container">
+    <form (ngSubmit)="onAddTodo(todoForm)" #todoForm="ngForm">
+        <input type="hidden" name="idInput" id="idInput" ngModel>
+        <div class="form-group">
+            <label for="nameInput"></label>
+            <input type="text" class="form-control" name="idInput" id="idInput"
+                placeholder="What do you want to do?" required #name="ngModel" [(ngModel)]="todo.name"> 
+                <div *ngIf="name.dirty && name.hasError('required')" class="alert alert-danger mt-2" role="alert">
+                <strong>The label is required</strong>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary"
+            [disabled]="todoForm.invalid">{{ todo.id == 0 ? "Add" : "Edit" }}</button>
+    </form>
+</div>
